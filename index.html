@@ -1,2 +1,73 @@
-200 OK
-(Do not freak out, x32 is updating!)
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+		<title>x32</title>
+	</head>
+	<body>
+		<ul class="list-group list-group-flush" id="messages">
+		</ul>
+		<nav class="navbar navbar-light bg-light">
+			<div class="container-fluid">
+				<span class="navbar-brand">x32 v4.2.1</span>
+				<span class="d-flex">Connected: &nbsp;<span id="sockets"></span></span>
+			</div>
+		</nav>
+		<div class="d-flex justify-content-center">
+			<div class="btn-group">
+				<button onclick="rank()" type="button" class="btn btn-success">Login</button>
+				
+				<div class="dropdown">
+					<button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Settings</button>
+					<ul class="dropdown-menu" id="settings">
+						<li><span class="dropdown-item" onclick="localStorage.removeItem('name')">Remove name from storage</span></li>
+						<li><span class="dropdown-item">Close</span></li>
+					</ul>
+				</div>
+
+				<button type="button" class="btn btn-warning" id="audiobutton">Play</button>
+				<button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"></button>
+				<ul class="dropdown-menu" id="radios">
+					<li><a class="dropdown-item" href="#" data-link="http://radio.plaza.one/mp3">Lofi 1</a></li>
+					<li><a class="dropdown-item" href="#" data-link="http://fluxfm.streamabc.net/flx-chillhop-mp3-320-1595440">Lofi 2</a></li>
+					<li><a class="dropdown-item" href="#" data-link="http://0n-2000s.radionetz.de/0n-2000s.aac">2000s</a></li>
+					<li><a class="dropdown-item" href="#" data-link="https://stream-mixtape-geo.ntslive.net/mixtape2">Hiphop & RNB</a></li>
+					<li><a class="dropdown-item" href="#" data-link="https://live.wostreaming.net/direct/wboc-waaifmmp3-ibc2">Country</a></li>
+					<li><a class="dropdown-item" href="#" data-link="http://streaming.radionomy.com/A-RADIO-TOP-40">Dance</a></li>
+					<li><a class="dropdown-item" href="#" data-link="http://bigrradio.cdnstream1.com/5106_128">POP</a></li>
+					<li><a class="dropdown-item" href="#" data-link="http://strm112.1.fm/ajazz_mobile_mp3">Jazz</a></li>
+					<li><a class="dropdown-item" href="#" data-link="http://strm112.1.fm/60s_70s_mobile_mp3">Oldies</a></li>
+					<li><a class="dropdown-item" href="#" data-link="http://strm112.1.fm/club_mobile_mp3">Club</a></li>
+					<li><a class="dropdown-item" href="#" data-link="https://freshgrass.streamguys1.com/irish-128mp3">Folk</a></li>
+					<li><a class="dropdown-item" href="#" data-link="http://1a-classicrock.radionetz.de/1a-classicrock.mp3">Classic Rock</a></li>
+					<li><a class="dropdown-item" href="#" data-link="http://streams.radiobob.de/metalcore/mp3-192">Metal</a></li>
+					<li><a class="dropdown-item" href="#" data-link="http://stream.laut.fm/beatdownx">Death Metal</a></li>
+					<li><a class="dropdown-item" href="#" data-link="http://live-radio01.mediahubaustralia.com/FM2W/aac/">Classical</a></li>
+					<li><a class="dropdown-item" href="#" data-link="http://bigrradio.cdnstream1.com/5187_128">Alternative</a></li>
+					<li><a class="dropdown-item" href="#" data-link="http://streaming.radionomy.com/R1Dubstep?lang=en">Dubstep</a></li>
+					<li><a class="dropdown-item" href="#" data-link="http://streams.90s90s.de/hiphop/mp3-128/">Oldschool</a></li>
+				</ul>
+			</div>
+		</div>
+		<input type="range" class="form-range" id="volume" min="0" max="2" value="1" step="0.01">
+
+		<div class="d-flex justify-content-center">
+			<ul id="members"></ul>
+		</div>
+		
+		<form id="form" action="" class="input-group">
+			<input id="input" autocomplete="off" class="form-control" placeholder="Message">
+			<button class="btn btn-dark" type="button">Send</button>
+			<button class="btn btn-secondary" type="button" onclick="namePrompt()">Name</button>
+		</form>
+		<audio src="http://radio.plaza.one/mp3" id="radioStream" crossorigin="anonymous" ></audio>
+		<script src="https://cdn.jsdelivr.net/npm/socket.io-client@3.1.2/dist/socket.io.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="smile.js"></script>  
+		<script src="radio.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
